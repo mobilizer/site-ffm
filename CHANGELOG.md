@@ -1,5 +1,43 @@
 # Freifunk München Firmware Changelog
 
+## v2015.4-altdorf
+ - Added additional Autoupdate Server
+ - Added additional Autoupdate Signatures
+ - Made changes necessary for Altdorf in i18n folder
+
+## v2015.4
+ - Updated to Gluon 2015.1
+   - More supported architectures and router models are available, including x86
+ - Setup Mode
+   - A new wifi configuration page is available to disable client and mesh
+     networks on 2.4 & 5GHz indiviually
+   - Mesh on WAN can now be configured and is enabled by default
+   - Internationalization for German and English is available and will
+     be autodetected depending on the browser setting
+
+## v2015.3
+ - Add 4 new gateways as placeholders (not all are and will be active immediately)
+ - Integrated no_rebroadcast fix on mesh-vpn from Gluon Upstream
+ - Added another key for stable version signing
+
+## v2015.2
+ - Updated to new upstream gluon: 52698e62bac2ec0f8764b12cf437040528e77efb
+ - Switched to batman-adv compat version 15
+ - Changed channel to 6 with HT20 on 2.4GHz
+ - Added FFMuc custom gluon packages with ebtables rules:
+   - mcast-drop-non-site to prohibit arp traffic except 10.8.0.0/16
+   - mcast-drop-arp to drop arp traffic from/to 0.0.0.0
+   - mcast-allow-cjdns to allow cjdns multicast traffic
+ - Use new gateways with DNS names
+ - Changed default download/upload traffic shaping to 12.000/1.200 kbit/s
+ - Removed keyformular note on end of luci configuration, as we're now
+   blacklisting keys instead of whitelisting
+ - Added information about liquid feedback on end of luci configuration
+ - Use improved version naming scheme for autoupdater compatibility with
+   intermediate versions
+ - Use internal NTP server 0.ntp.ffmuc.net
+ - Connections from nodes to gateways only over IPv4 for now (MTU issues)
+
 ## v2015.1-altdorf
  - Changed SSID to altdorf.freifunk.net
  - Changed Autoupdater URLs for altdorf firmware
