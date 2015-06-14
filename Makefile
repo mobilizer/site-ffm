@@ -1,6 +1,6 @@
 GLUON_BUILD_DIR := gluon-build
-GLUON_GIT_URL := https://github.com/freifunk-gluon/gluon.git
-GLUON_GIT_REF := v2015.1
+GLUON_GIT_URL := https://github.com/freifunkMUC/gluon.git
+GLUON_GIT_REF := 620f01f513012757a66d782ef0e930245fcdc1e8
 
 SECRET_KEY_FILE ?= ${HOME}/.gluon-secret-key
 
@@ -16,9 +16,7 @@ else
   GLUON_BRANCH := experimental
 endif
 
-JOBS ?= $(shell cat /proc/cpuinfo | grep processor | wc -l)
-
-GLUON_MAKE := ${MAKE} -j ${JOBS} -C ${GLUON_BUILD_DIR} \
+GLUON_MAKE := ${MAKE} -C ${GLUON_BUILD_DIR} \
 			GLUON_RELEASE=${GLUON_RELEASE} \
 			GLUON_BRANCH=${GLUON_BRANCH}
 
