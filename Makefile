@@ -1,6 +1,6 @@
 GLUON_BUILD_DIR := gluon-build
-GLUON_GIT_URL := https://github.com/freifunkMUC/gluon.git
-GLUON_GIT_REF := 620f01f513012757a66d782ef0e930245fcdc1e8
+GLUON_GIT_URL := https://github.com/freifunk-gluon/gluon.git
+GLUON_GIT_REF := v2015.1.1
 
 SECRET_KEY_FILE ?= ${HOME}/.gluon-secret-key
 
@@ -47,7 +47,10 @@ ${GLUON_BUILD_DIR}:
 	git clone ${GLUON_GIT_URL} ${GLUON_BUILD_DIR}
 
 gluon-prepare: images-clean ${GLUON_BUILD_DIR}
-	(cd ${GLUON_BUILD_DIR} && git fetch origin && git checkout -q ${GLUON_GIT_REF})
+	(cd ${GLUON_BUILD_DIR} \
+	  && git remote set-url origin ${GLUON_GIT_URL} \
+	  && git fetch origin \
+	  && git checkout -q ${GLUON_GIT_REF})
 	ln -sfT .. ${GLUON_BUILD_DIR}/site
 	${GLUON_MAKE} update
 
