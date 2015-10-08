@@ -1,6 +1,5 @@
 GLUON_SITE_PACKAGES := \
-	gluon-mesh-batman-adv-15 \
-	gluon-alfred \
+	gluon-mesh-babel \
 	gluon-announced \
 	gluon-autoupdater \
 	gluon-config-mode-core \
@@ -9,8 +8,6 @@ GLUON_SITE_PACKAGES := \
 	gluon-config-mode-mesh-vpn \
 	gluon-config-mode-geo-location \
 	gluon-config-mode-contact-info \
-	gluon-ebtables-filter-multicast \
-	gluon-ebtables-filter-ra-dhcp \
 	gluon-luci-admin \
 	gluon-luci-autoupdater \
 	gluon-luci-portconfig \
@@ -23,9 +20,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-status-page \
 	iwinfo \
 	iptables \
-	haveged \
-	gluon-ebtables-filter-arp-ffmuc \
-	gluon-ebtables-filter-multicast-ffmuc
+	haveged
 
 
 DEFAULT_GLUON_RELEASE := snapshot~$(shell date '+%Y%m%d')
