@@ -18,7 +18,12 @@ else
   GLUON_BRANCH := experimental
 endif
 
-JOBS ?= $(shell cat /proc/cpuinfo | grep processor | wc -l)
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+  JOBS ?= $(sysctl -n hw.physicalcpu)
+else
+  JOBS ?= $(shell cat /proc/cpuinfo | grep processor | wc -l)
+endif
 
 GLUON_MAKE := ${MAKE} -j ${JOBS} -C ${GLUON_BUILD_DIR} \
 			GLUON_RELEASE=${GLUON_RELEASE} \
@@ -55,7 +60,11 @@ gluon-prepare: output-clean ${GLUON_BUILD_DIR}
 	  && git remote set-url origin ${GLUON_GIT_URL} \
 	  && git fetch origin \
 	  && git checkout -q ${GLUON_GIT_REF})
-	ln -sfT .. ${GLUON_BUILD_DIR}/site
+ifeq ($(OS),Darwin)
+	  ln -sfh .. ${GLUON_BUILD_DIR}/site
+else
+	  ln -sfT .. ${GLUON_BUILD_DIR}/site
+endif
 	${GLUON_MAKE} update
 
 gluon-clean:

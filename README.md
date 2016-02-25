@@ -5,6 +5,12 @@ Check out this repository and execute `make`, i.e. like this:
     git clone https://github.com/freifunkMUC/site-ffm.git site-ffm
     cd site-ffm
     make
+    
+### Build on OS X
+
+- Additional brew formulas needed. See:  [OpenWrt Buildroot – Installation on Mac OS X](https://wiki.openwrt.org/doc/howto/buildroot.exigence.macosx)
+- Case-sensitive HFS+ filesystem needed
+
 
 ## Further Resources
 
